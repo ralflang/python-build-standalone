@@ -809,11 +809,13 @@ fn validate_elf<'data, Elf: FileHeader<Endian = Endianness>>(
     }
 
     allowed_libraries.push(format!(
-        "$ORIGIN/../lib/libpython{}.so.1.0",
+//        "$ORIGIN/../lib/libpython{}.so.1.0",
+        "libpython{}.so.1.0",
         python_major_minor
     ));
     allowed_libraries.push(format!(
-        "$ORIGIN/../lib/libpython{}d.so.1.0",
+        "libpython{}d.so.1.0",
+//        "$ORIGIN/../lib/libpython{}d.so.1.0",
         python_major_minor
     ));
 

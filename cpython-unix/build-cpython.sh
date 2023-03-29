@@ -521,19 +521,19 @@ if [ "${PYBUILD_SHARED}" = "1" ]; then
         # If we simply set DT_RUNPATH via --set-rpath, LD_LIBRARY_PATH would be used before
         # DT_RUNPATH, which could result in confusion at run-time. But if DT_NEEDED
         # contains a slash, the explicit path is used.
-        patchelf --replace-needed ${LIBPYTHON_SHARED_LIBRARY_BASENAME} "\$ORIGIN/../lib/${LIBPYTHON_SHARED_LIBRARY_BASENAME}" \
-            ${ROOT}/out/python/install/bin/python${PYTHON_MAJMIN_VERSION}
+        #patchelf --replace-needed ${LIBPYTHON_SHARED_LIBRARY_BASENAME} "\$ORIGIN/../lib/${LIBPYTHON_SHARED_LIBRARY_BASENAME}" \
+        #    ${ROOT}/out/python/install/bin/python${PYTHON_MAJMIN_VERSION}
 
         # libpython3.so isn't present in debug builds.
-        if [ -z "${CPYTHON_DEBUG}" ]; then
-            patchelf --replace-needed ${LIBPYTHON_SHARED_LIBRARY_BASENAME} "\$ORIGIN/../lib/${LIBPYTHON_SHARED_LIBRARY_BASENAME}" \
-                ${ROOT}/out/python/install/lib/libpython3.so
-        fi
+        #if [ -z "${CPYTHON_DEBUG}" ]; then
+        #    patchelf --replace-needed ${LIBPYTHON_SHARED_LIBRARY_BASENAME} "\$ORIGIN/../lib/${LIBPYTHON_SHARED_LIBRARY_BASENAME}" \
+        #        ${ROOT}/out/python/install/lib/libpython3.so
+        #fi
 
-        if [ -n "${PYTHON_BINARY_SUFFIX}" ]; then
-            patchelf --replace-needed ${LIBPYTHON_SHARED_LIBRARY_BASENAME} "\$ORIGIN/../lib/${LIBPYTHON_SHARED_LIBRARY_BASENAME}" \
-                ${ROOT}/out/python/install/bin/python${PYTHON_MAJMIN_VERSION}${PYTHON_BINARY_SUFFIX}
-        fi
+        #if [ -n "${PYTHON_BINARY_SUFFIX}" ]; then
+        #    patchelf --replace-needed ${LIBPYTHON_SHARED_LIBRARY_BASENAME} "\$ORIGIN/../lib/${LIBPYTHON_SHARED_LIBRARY_BASENAME}" \
+        #        ${ROOT}/out/python/install/bin/python${PYTHON_MAJMIN_VERSION}${PYTHON_BINARY_SUFFIX}
+        #fi
     fi
 fi
 
